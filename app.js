@@ -1,5 +1,5 @@
 let score = document.querySelector('.score');
-let gameScreen = document.querySelector('.game');
+let gameScreen = document.querySelector('.gameScreen');
 let startScreen = document.querySelector('.startScreen');
 
 
@@ -8,45 +8,48 @@ startScreen.addEventListener('click', startGame);
 document.addEventListener('keydown', keyPressed);
 document.addEventListener('keyup', keyReleased);
 
-let keys = {
+
+let controls = {
     ArrowUp: false,
     ArrowDown: false,
     ArrowLeft: false,
     ArrowRight: false
 }
 
-function keyPressed(event){
-    event.preventDefault();
-    console.log("key pressed",event.key)
-    keys[event.key] = true
-    console.log(keys) // something need to taught later
-    
-    
+function keyPressed(e) {
+    console.log("Pressed",e.key);
+    if(controls.e.key !== undefined){
+      controls[e.key] = true;
+    //   console.log(controls);
+    }
 }
 
-
-function keyReleased(event){
-    event.preventDefault();
-    console.log("key released", event.key)
-    keys[event.key] = false
-    console.log(keys)
+function keyReleased(e) {
+    console.log("Released",e.key);
+    if(controls.e.key !== undefined){
+        controls[e.key] = false;
+        // console.log(controls);
+      }
 }
 
-
-
-
-
+// startScreen.classList.add('hide');
 function startGame() {
+     console.log("Clicked")
     // add or remove a calss from certain element
     //  console.log(startScreen.classList)
      startScreen.classList.add('hide');
      gameScreen.classList.remove('hide');
 
-for(i = 0; i<5; i++){
-    let car = document.createElement('div');
-    car.innerText = "Car" + " " + i;
-    gameScreen.appendChild(car);
-  }
+     // create a car
+
+     let car = document.createElement('div');
+     car.setAttribute('class', 'car');
+     car.innerText = "Car";
+     car.style.left = "100px";
+     car.style.top = "100px";
+     car.style.backgroundColor = "red";
+     gameScreen.appendChild(car);
+     
  
 
 }
